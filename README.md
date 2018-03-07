@@ -18,3 +18,24 @@ for more information.
 ## Mailing List
 
 Discuss features and ask questions on [LoopBack Forum](https://groups.google.com/forum/#!forum/loopbackjs).
+
+#### Custom AuthHeader:
+
+Accepts an `options.authHeader` to define what lb-services.js should key the authorization token by in the headers. Used in conjunction with setting loopback token middleware to accept custom auth headers.
+
+ie:
+```js
+// server.js
+server.use(
+	loopback.token({
+		headers: ['access_token']
+	})
+);
+```
+
+```js
+// gulp-loopback-sdk-angular (forked version to accept authHeader option) task
+// [...]
+.pipe(lbAngular({authHeader: 'access_token'})) 
+// [...]
+```
